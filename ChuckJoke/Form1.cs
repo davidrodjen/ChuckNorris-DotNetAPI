@@ -23,13 +23,36 @@ namespace ChuckJoke
         public Form1()
         {
             InitializeComponent();
+            //Added the populate box to the initialize formload.
+            populateBox();
         }
 
+        /// <summary>
+        /// Async Method to get the joke, pulling from the
+        /// Coreclass ChuckNorrisClient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void getJokeBtn_ClickAsync(object sender, EventArgs e)
         {
             Joke joke = await ChuckNorrisClient.GetRandomJoke();
 
             MessageBox.Show(joke.JokeText);
+        }
+
+        /// <summary>
+        /// Method to populate the CategoryBox 
+        /// pulling the category values from the API
+        /// </summary>
+        private async void populateBox()
+        {
+            IEnumerable<string> categories = await ChuckNorrisClient.GetCategories();
+
+            foreach (string category in categories)
+            {
+                categoryBx.Items.Add(category);
+            }
+
         }
     }
 }
