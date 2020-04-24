@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChuckNorrisAPI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ChuckNorrisAPI;
 
 
 
@@ -25,9 +25,11 @@ namespace ChuckJoke
             InitializeComponent();
         }
 
-        private async Task getJokeBtn_ClickAsync(object sender, EventArgs e)
+        public async void getJokeBtn_ClickAsync(object sender, EventArgs e)
         {
             Joke joke = await ChuckNorrisClient.GetRandomJoke();
+
+            MessageBox.Show(joke.JokeText);
         }
     }
 }
