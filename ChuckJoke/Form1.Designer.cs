@@ -42,6 +42,7 @@
             this.getJokeBtn.TabIndex = 0;
             this.getJokeBtn.Text = "Get A Joke!";
             this.getJokeBtn.UseVisualStyleBackColor = true;
+            this.getJokeBtn.Click += new System.EventHandler(this.getJokeBtn_ClickAsync);
             // 
             // jokeTxt
             // 
